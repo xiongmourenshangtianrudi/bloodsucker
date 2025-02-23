@@ -1,0 +1,3 @@
+extends AbilityUpgrade
+class_name ability
+@export var ability_controler_scene:PackedScene

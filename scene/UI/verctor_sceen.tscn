@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0m7fyeo2865m"]
+
+[ext_resource type="Script" path="res://script/Ui/verctor_sceen.gd" id="1_rtuym"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pgkbw"]
+font_size = 31
+
+[sub_resource type="LabelSettings" id="LabelSettings_krjfq"]
+font_size = 26
+
+[node name="verctorSceen" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_rtuym")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+custom_minimum_size = Vector2(268.59, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "vector"
+label_settings = SubResource("LabelSettings_pgkbw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "你赢了"
+label_settings = SubResource("LabelSettings_krjfq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="quitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "QUIT"

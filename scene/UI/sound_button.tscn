@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://djqidvwrwm335"]
+
+[ext_resource type="Script" path="res://script/soundButton/sound_button.gd" id="1_o3d66"]
+[ext_resource type="PackedScene" uid="uid://dkbi5h853f8re" path="res://scene/RandomStreamPlayer2d/random_stream_player.tscn" id="2_ejtg3"]
+
+[node name="soundButton" type="Button"]
+offset_right = 20.0
+offset_bottom = 20.0
+script = ExtResource("1_o3d66")
+
+[node name="randomStreamPlayer" parent="." instance=ExtResource("2_ejtg3")]

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=3 format=3 uid="uid://dx8oywiwy2l1s"]
+
+[ext_resource type="Texture2D" uid="uid://bgvp5xkqu6ns8" path="res://assets/Resource/sward/sward.png" id="1_0u204"]
+[ext_resource type="Script" path="res://assets/Resource/upgrades/ability_upgrade.gd" id="1_q7per"]
+
+[resource]
+script = ExtResource("1_q7per")
+id = "sward_rate"
+maxlevel = 6
+name = "Sward Quickness"
+icon = ExtResource("1_0u204")
+description = "increases sward attack rate by 10 psersent"

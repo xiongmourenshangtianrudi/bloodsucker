@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="meta_upgrade" load_steps=2 format=3 uid="uid://cpvdintnmcdl5"]
+
+[ext_resource type="Script" path="res://assets/Resource/mate_upgrades/mate_upgrades.gd" id="1_6rk3b"]
+
+[resource]
+script = ExtResource("1_6rk3b")
+id = "experence_gain"
+experence_coast = 500
+max_quantity = 3
+title = "Increase Experience"
+description = "经验掉落概率增加10%"

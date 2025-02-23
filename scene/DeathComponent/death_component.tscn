@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://cuydb4mqlbei8"]
+
+[ext_resource type="Script" path="res://scene/DeathComponent/death_component.gd" id="1_csgh8"]
+[ext_resource type="Texture2D" uid="uid://dui61bq2rw3g2" path="res://assets/enemy/enemy.png" id="1_fi0sb"]
+
+[sub_resource type="Curve" id="Curve_pogh3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.493858, 1), 0.0, 0.0, 0, 0, Vector2(0.985258, 0), 0.165778, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4ukaa"]
+curve = SubResource("Curve_pogh3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_60ttm"]
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+direction = Vector3(0, -1, 0)
+spread = 30.0
+initial_velocity_min = 150.0
+initial_velocity_max = 200.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+gravity = Vector3(0, 400, 0)
+scale_curve = SubResource("CurveTexture_4ukaa")
+
+[node name="DeathComponent" type="Node2D"]
+script = ExtResource("1_csgh8")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_60ttm")
+texture = ExtResource("1_fi0sb")
+lifetime = 0.75
+one_shot = true
+fixed_fps = 0
+interpolate = false

@@ -1,0 +1,118 @@
+[gd_scene load_steps=10 format=3 uid="uid://cdfmaal5bt8wv"]
+
+[ext_resource type="Script" path="res://script/ability/laserability.gd" id="1_mt54c"]
+[ext_resource type="Texture2D" uid="uid://ctbvxucwp4ewd" path="res://assets/Particl/红粒子.png" id="2_kt3ag"]
+[ext_resource type="PackedScene" uid="uid://b1s22iovhdq2u" path="res://scene/ability/hitBoxComponent/hit_box_component.tscn" id="3_3wxke"]
+
+[sub_resource type="Curve" id="Curve_2jnj5"]
+_data = [Vector2(0.0633803, 0.495522), 0.0, 0.0, 0, 0, Vector2(0.485916, 0.107463), 0.0, 0.0, 0, 0, Vector2(0.85446, 0.573134), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g37lx"]
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+velocity_pivot = Vector3(1, 0, 0)
+spread = 46.539
+initial_velocity_min = 10.0
+initial_velocity_max = 56.6
+gravity = Vector3(0, 0, 0)
+scale_min = 0.01
+scale_max = 0.1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ryftk"]
+lifetime_randomness = 0.35
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(0, 1, 1)
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+tangential_accel_min = 100.0
+tangential_accel_max = 100.0
+scale_min = 0.05
+scale_max = 0.07
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_chf7u"]
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+velocity_pivot = Vector3(1, 0, 0)
+spread = 90.0
+initial_velocity_min = 25.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.01
+scale_max = 0.1
+
+[sub_resource type="Environment" id="Environment_4nti5"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.54
+glow_strength = 1.31
+glow_blend_mode = 0
+glow_hdr_threshold = 1.21
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_uqvrr"]
+b = Vector2(256, 1)
+
+[node name="laserability" type="Node2D" groups=["persistent_damage"]]
+script = ExtResource("1_mt54c")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+enabled = false
+target_position = Vector2(277.03, 0)
+collision_mask = 38
+
+[node name="Line2D" type="Line2D" parent="RayCast2D"]
+modulate = Color(1.3, 1, 1, 1)
+points = PackedVector2Array(0, 0, 273, 0)
+width_curve = SubResource("Curve_2jnj5")
+default_color = Color(1.2, 0.364, 0.395, 1)
+round_precision = 2
+
+[node name="startpos" type="GPUParticles2D" parent="RayCast2D"]
+modulate = Color(1.3, 1, 1, 1)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_g37lx")
+texture = ExtResource("2_kt3ag")
+
+[node name="center" type="GPUParticles2D" parent="RayCast2D"]
+modulate = Color(1.3, 1, 1, 1)
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_ryftk")
+texture = ExtResource("2_kt3ag")
+lifetime = 0.45
+local_coords = true
+
+[node name="endpos" type="GPUParticles2D" parent="RayCast2D"]
+modulate = Color(1.3, 1, 1, 1)
+position = Vector2(270, 2)
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_chf7u")
+texture = ExtResource("2_kt3ag")
+local_coords = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4nti5")
+
+[node name="hitBoxComponent" parent="." instance=ExtResource("3_3wxke")]
+position = Vector2(0, 0)
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitBoxComponent"]
+shape = SubResource("SegmentShape2D_uqvrr")
+one_way_collision_margin = 0.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

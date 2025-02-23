@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca2lo6cv5nw6g"]
+
+[ext_resource type="Script" path="res://script/meta_prograss_script/meta_prograssion_manager.gd" id="1_c6j5q"]
+
+[node name="meta_prograssion_manager" type="Node"]
+script = ExtResource("1_c6j5q")

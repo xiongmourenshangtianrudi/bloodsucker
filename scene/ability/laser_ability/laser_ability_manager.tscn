@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dchpvjhvk53bx"]
+
+[ext_resource type="Script" path="res://script/ability/laser_ability_manager.gd" id="1_uvu3s"]
+[ext_resource type="PackedScene" uid="uid://cdfmaal5bt8wv" path="res://scene/ability/laser_ability/laserability.tscn" id="2_ww5dt"]
+
+[node name="laserAbilityManager" type="Node"]
+script = ExtResource("1_uvu3s")
+laser = ExtResource("2_ww5dt")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

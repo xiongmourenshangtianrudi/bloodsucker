@@ -1,0 +1,31 @@
+[gd_scene load_steps=10 format=3 uid="uid://c55neqxgi2udr"]
+
+[ext_resource type="Script" path="res://script/experienceScript/experience.gd" id="1_7knii"]
+[ext_resource type="Texture2D" uid="uid://t10rr8aq7dha" path="res://assets/Resource/experience/experience.png" id="1_faows"]
+[ext_resource type="PackedScene" uid="uid://dpixlnslxxg8v" path="res://scene/RandomStreamPlayer2d/random_stream_player_2d.tscn" id="2_wm3wn"]
+[ext_resource type="AudioStream" uid="uid://db3trl8d6gvc1" path="res://assets/Resource/audio/gitExeperience/impactGeneric_light_000.ogg" id="3_4kri8"]
+[ext_resource type="AudioStream" uid="uid://mgf24yjgojoi" path="res://assets/Resource/audio/gitExeperience/impactGeneric_light_001.ogg" id="4_lhlec"]
+[ext_resource type="AudioStream" uid="uid://c1rdkf71f23gb" path="res://assets/Resource/audio/gitExeperience/impactGeneric_light_002.ogg" id="5_mhoms"]
+[ext_resource type="AudioStream" uid="uid://ctqep0vlqrjwd" path="res://assets/Resource/audio/gitExeperience/impactGeneric_light_003.ogg" id="6_cqu1y"]
+[ext_resource type="AudioStream" uid="uid://4fu5d5bjrc4u" path="res://assets/Resource/audio/gitExeperience/impactGeneric_light_004.ogg" id="7_bw27u"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_du0fa"]
+height = 28.0
+
+[node name="experience" type="Node2D"]
+script = ExtResource("1_7knii")
+
+[node name="RandomStreamPlayer2d" parent="." instance=ExtResource("2_wm3wn")]
+streams = Array[AudioStream]([ExtResource("3_4kri8"), ExtResource("4_lhlec"), ExtResource("5_mhoms"), ExtResource("6_cqu1y"), ExtResource("7_bw27u")])
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_du0fa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_faows")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

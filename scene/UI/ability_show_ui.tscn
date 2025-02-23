@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsgmk63c013ql"]
+
+[ext_resource type="Texture2D" uid="uid://bx2jaglxc8shf" path="res://assets/Resource/axe_ability/axe_ability.png" id="1_0xp2i"]
+[ext_resource type="Script" path="res://script/Ui/ability_show_ui.gd" id="2_lrfjv"]
+[ext_resource type="Shader" path="res://scene/UI/ability_show_ui.gdshader" id="3_x8cgt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vb15s"]
+shader = ExtResource("3_x8cgt")
+
+[node name="ability_show_card" type="TextureRect"]
+custom_minimum_size = Vector2(25, 25)
+size_flags_horizontal = 6
+texture = ExtResource("1_0xp2i")
+script = ExtResource("2_lrfjv")
+
+[node name="icon" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_vb15s")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.03)
+
+[node name="level_show" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -21.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 0
+text = "1"
+horizontal_alignment = 2
+vertical_alignment = 2

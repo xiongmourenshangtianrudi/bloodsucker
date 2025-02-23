@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=3 uid="uid://dgfe7e57qd5f5"]
+
+[ext_resource type="Script" path="res://script/enemy/base_enemy.gd" id="1_464hi"]
+[ext_resource type="Texture2D" uid="uid://dui61bq2rw3g2" path="res://assets/enemy/enemy.png" id="2_4r781"]
+[ext_resource type="PackedScene" uid="uid://dk7f44oxkb2gu" path="res://scene/HealthComponent/health_component.tscn" id="2_pjx5m"]
+[ext_resource type="PackedScene" uid="uid://b7bc18pmkhcsf" path="res://scene/viadDrogComponent/experence_manager.tscn" id="3_q6a04"]
+[ext_resource type="PackedScene" uid="uid://c55neqxgi2udr" path="res://scene/experience/experience.tscn" id="4_2ud7m"]
+[ext_resource type="PackedScene" uid="uid://22luwaoj0bqh" path="res://scene/enemey/hurtbox/hurtbox.tscn" id="5_b0xk6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cn0a4"]
+radius = 14.0357
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ns7tj"]
+radius = 6.0
+
+[node name="enemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 6
+collision_mask = 6
+motion_mode = 1
+script = ExtResource("1_464hi")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_pjx5m")]
+
+[node name="ViadDrogComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_q6a04")]
+viad_scene = ExtResource("4_2ud7m")
+health_component = NodePath("../HealthComponent")
+
+[node name="hurtbox" parent="." node_paths=PackedStringArray("helathbox") instance=ExtResource("5_b0xk6")]
+helathbox = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_cn0a4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4r781")
+offset = Vector2(0, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_ns7tj")

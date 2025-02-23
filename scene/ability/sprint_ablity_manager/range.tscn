@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://duc2g818qnxkn"]
+
+[ext_resource type="Texture2D" uid="uid://bf7q38vfuxu6t" path="res://assets/controler/indicator/indicator.png" id="1_lj8vy"]
+[ext_resource type="Shader" path="res://scene/ability/sprint_ablity_manager/range.gdshader" id="1_vkr60"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_in7jv"]
+shader = ExtResource("1_vkr60")
+shader_parameter/color_left = Color(1, 0, 0, 1)
+shader_parameter/color_right = Color(1, 0.633, 0.749, 0)
+shader_parameter/gra = 0.0
+
+[node name="range" type="Sprite2D"]
+top_level = true
+material = SubResource("ShaderMaterial_in7jv")
+scale = Vector2(0.14, 0.04)
+texture = ExtResource("1_lj8vy")
+offset = Vector2(512, 13)
+region_rect = Rect2(0, 0, 1024, 474)

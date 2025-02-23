@@ -1,0 +1,13 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpixlnslxxg8v"]
+
+[ext_resource type="Script" path="res://script/RandomStreamPlayerComponent/random_stream_player_2d.gd" id="1_mkmlm"]
+[ext_resource type="AudioStream" uid="uid://chne8wu20ispt" path="res://assets/Resource/audio/enemyGetHit/footstep_carpet_001.ogg" id="2_ldkcu"]
+[ext_resource type="AudioStream" uid="uid://chiqhv0ectqj6" path="res://assets/Resource/audio/enemyGetHit/footstep_carpet_002.ogg" id="3_4m7ap"]
+[ext_resource type="AudioStream" uid="uid://bgote03dr0s7n" path="res://assets/Resource/audio/enemyGetHit/footstep_carpet_003.ogg" id="4_okc84"]
+[ext_resource type="AudioStream" uid="uid://d2dymywsj0134" path="res://assets/Resource/audio/enemyGetHit/footstep_carpet_004.ogg" id="5_y13di"]
+[ext_resource type="AudioStream" uid="uid://rkhq51xgs85j" path="res://assets/Resource/audio/enemyGetHit/footstep_carpet_000.ogg" id="6_uu33s"]
+
+[node name="RandomStreamPlayer2d" type="AudioStreamPlayer2D"]
+bus = &"sfx"
+script = ExtResource("1_mkmlm")
+streams = Array[AudioStream]([ExtResource("2_ldkcu"), ExtResource("3_4m7ap"), ExtResource("4_okc84"), ExtResource("5_y13di"), ExtResource("6_uu33s")])

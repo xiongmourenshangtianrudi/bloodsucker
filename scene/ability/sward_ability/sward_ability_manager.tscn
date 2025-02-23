@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqtqvvjojg2rq"]
+
+[ext_resource type="Script" path="res://script/ability/sward_ability_manager.gd" id="1_ly1ed"]
+[ext_resource type="PackedScene" uid="uid://dmu3ghg6hs7p3" path="res://scene/ability/sward_ability/sward_ability.tscn" id="2_robtc"]
+
+[node name="SwardAbilityManager" type="Node"]
+script = ExtResource("1_ly1ed")
+sward = ExtResource("2_robtc")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true

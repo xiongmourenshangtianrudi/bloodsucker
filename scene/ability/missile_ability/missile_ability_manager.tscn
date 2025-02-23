@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6une6h78i01t"]
+
+[ext_resource type="Script" path="res://script/ability/missile_ability_manager.gd" id="1_1d5yb"]
+[ext_resource type="PackedScene" uid="uid://ccdvko1pgitfj" path="res://scene/ability/missile_ability/missile.tscn" id="2_s8igc"]
+
+[node name="missile_Ability_manager" type="Node"]
+script = ExtResource("1_1d5yb")
+missile = ExtResource("2_s8igc")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

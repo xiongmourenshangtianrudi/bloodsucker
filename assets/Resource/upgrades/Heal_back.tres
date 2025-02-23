@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="other_upgrade" load_steps=2 format=3 uid="uid://bbvxme7xuvhbg"]
+
+[ext_resource type="Script" path="res://assets/Resource/upgrades/other_upgrade.gd" id="1_igtoe"]
+
+[resource]
+script = ExtResource("1_igtoe")
+other = true
+health = 100.0
+id = "health_back"
+maxlevel = 2000
+name = "回复生命值"
+description = "回复100点生命值 （活下去）"

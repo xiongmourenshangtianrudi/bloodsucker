@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://cmfapnhscrm7x"]
+
+[ext_resource type="Script" path="res://assets/Resource/upgrades/ability_upgrade.gd" id="1_lq0xj"]
+
+[resource]
+script = ExtResource("1_lq0xj")
+id = "move_speed_rate"
+maxlevel = 3
+name = "提升移动速度"
+description = "提升角色10%当前移动速度。"

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7bc18pmkhcsf"]
+
+[ext_resource type="Script" path="res://script/viadDrogComponent/viad_drog_component.gd" id="1_6x2gg"]
+
+[node name="ViadDrogComponent" type="Node"]
+script = ExtResource("1_6x2gg")
+drop_percent = 0.2

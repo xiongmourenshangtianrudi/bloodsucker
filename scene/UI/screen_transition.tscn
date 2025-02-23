@@ -1,0 +1,123 @@
+[gd_scene load_steps=10 format=3 uid="uid://ct333jkphrsdu"]
+
+[ext_resource type="Script" path="res://script/Ui/screen_transition.gd" id="1_yji3q"]
+[ext_resource type="Shader" path="res://scene/UI/screen_transition.gdshader" id="2_qkf2o"]
+[ext_resource type="Texture2D" uid="uid://d0ibvej6opwn8" path="res://assets/Resource/theme/texture/黑白渐变.png" id="3_rbsuf"]
+
+[sub_resource type="Animation" id="Animation_vf20q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/persent")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_s7v6e"]
+resource_name = "transition_an"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/persent")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.4),
+"transitions": PackedFloat32Array(1, 2.07053, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"emit_transition_halfway"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3llj5"]
+_data = {
+"RESET": SubResource("Animation_vf20q"),
+"transition_an": SubResource("Animation_s7v6e")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bpiih"]
+shader = ExtResource("2_qkf2o")
+shader_parameter/texture_color = Color(0.247059, 0.14902, 0.192157, 1)
+shader_parameter/persent = 0.0
+shader_parameter/transition_texture = ExtResource("3_rbsuf")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ld5y"]
+bg_color = Color(0.47788, 0.47788, 0.47788, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fxs8"]
+bg_color = Color(0.65, 0.3211, 0.2015, 1)
+
+[node name="ScreenTransition" type="CanvasLayer"]
+process_mode = 3
+layer = 5
+script = ExtResource("1_yji3q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3llj5")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_bpiih")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.897711, 0.145994, 0.805638, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -274.0
+offset_top = -47.0
+offset_right = -3.0
+offset_bottom = -26.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_styles/background = SubResource("StyleBoxFlat_1ld5y")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0fxs8")
+max_value = 1.0
+
+[node name="Label" type="Label" parent="ProgressBar"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -19.5
+offset_top = 1.0
+offset_right = 20.5
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "加载中"

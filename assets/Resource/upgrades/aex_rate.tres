@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ability" load_steps=4 format=3 uid="uid://bk4in2boxc3t3"]
+
+[ext_resource type="PackedScene" uid="uid://bq10rlarhuk6o" path="res://scene/ability/axe_ability/axe_abiliity_controler.tscn" id="1_iddea"]
+[ext_resource type="Script" path="res://assets/Resource/upgrades/ability.gd" id="2_flo8g"]
+[ext_resource type="Texture2D" uid="uid://bx2jaglxc8shf" path="res://assets/Resource/axe_ability/axe_ability.png" id="2_iexfp"]
+
+[resource]
+script = ExtResource("2_flo8g")
+ability_controler_scene = ExtResource("1_iddea")
+id = "aex_rate"
+maxlevel = 10
+name = "aex_up"
+icon = ExtResource("2_iexfp")
+description = "旋转飞斧，对敌造成范围伤害。减少10%装填时间，增加10点伤害。满级增加1000伤害"

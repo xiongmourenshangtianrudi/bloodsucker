@@ -1,0 +1,127 @@
+[gd_scene load_steps=11 format=3 uid="uid://cklibd08capco"]
+
+[ext_resource type="Script" path="res://script/Ui/experiece_bar.gd" id="1_vad3e"]
+[ext_resource type="Theme" uid="uid://dmt71bn71dtrt" path="res://assets/Resource/theme/themes.tres" id="2_kiad7"]
+[ext_resource type="Texture2D" uid="uid://de3ehpn0erh2w" path="res://assets/Resource/theme/uiback/uibox.png" id="3_yvb20"]
+[ext_resource type="Texture2D" uid="uid://csrvksyaf66id" path="res://assets/Resource/theme/uiback/uiback.png" id="4_8uiu5"]
+[ext_resource type="PackedScene" uid="uid://bsgmk63c013ql" path="res://scene/UI/ability_show_ui.tscn" id="5_8qug7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nsng7"]
+texture = ExtResource("3_yvb20")
+
+[sub_resource type="Theme" id="Theme_csim1"]
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_nsng7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2mjw0"]
+texture = ExtResource("4_8uiu5")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(231, 33, 32, 32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ediwg"]
+bg_color = Color(0.5, 0.34, 0.18, 0.533333)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ua3j"]
+bg_color = Color(0, 0.6, 0.858824, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.501961, 0.341176, 0.180392, 0.533333)
+
+[node name="ExperieceBar" type="CanvasLayer"]
+script = ExtResource("1_vad3e")
+abiliay_ui = ExtResource("5_8qug7")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 85
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "生命："
+
+[node name="health" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.838061, 0.106063, 0.363966, 1)
+text = "100"
+
+[node name="background" type="PanelContainer" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_kiad7")
+
+[node name="ability_box" type="GridContainer" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/background"]
+custom_minimum_size = Vector2(115.09, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_csim1")
+theme_override_constants/h_separation = 3
+columns = 6
+
+[node name="skill1" type="PanelContainer" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/background/ability_box"]
+custom_minimum_size = Vector2(37, 37)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_2mjw0")
+
+[node name="skill2" type="PanelContainer" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/background/ability_box"]
+custom_minimum_size = Vector2(37, 37)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_2mjw0")
+
+[node name="skill3" type="PanelContainer" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/background/ability_box"]
+custom_minimum_size = Vector2(37, 37)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_2mjw0")
+
+[node name="skill4" type="PanelContainer" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/background/ability_box"]
+custom_minimum_size = Vector2(37, 37)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_2mjw0")
+
+[node name="skill5" type="PanelContainer" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/background/ability_box"]
+custom_minimum_size = Vector2(37, 37)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_2mjw0")
+
+[node name="skill6" type="PanelContainer" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/background/ability_box"]
+custom_minimum_size = Vector2(37, 37)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_2mjw0")
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ediwg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3ua3j")
+max_value = 1.0
+show_percentage = false

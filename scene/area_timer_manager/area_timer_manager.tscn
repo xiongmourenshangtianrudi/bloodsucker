@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://h7v12xx3qjc0"]
+
+[ext_resource type="Script" path="res://script/area_timer_manager/area_timer_manager.gd" id="1_p5hm5"]
+[ext_resource type="PackedScene" uid="uid://bbapuhn5hfcft" path="res://scene/UI/end_sceen.tscn" id="2_a5mkm"]
+
+[node name="area_timer_manager" type="Node"]
+script = ExtResource("1_p5hm5")
+end_screen_crene = ExtResource("2_a5mkm")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 600.0
+one_shot = true
+autostart = true

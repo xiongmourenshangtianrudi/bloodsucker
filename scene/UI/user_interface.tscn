@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://b41moe2444bb7"]
+
+[ext_resource type="Script" path="res://script/Ui/user_interface.gd" id="1_crpk1"]
+
+[sub_resource type="Theme" id="Theme_3dl2c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k6ms0"]
+bg_color = Color(0.619409, 0.696919, 0.704279, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdomc"]
+bg_color = Color(0.701228, 0.0456898, 0.418257, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.619608, 0.698039, 0.705882, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hchnh"]
+line_spacing = 2.84
+font_size = 12
+
+[node name="UserInterface" type="CanvasLayer"]
+script = ExtResource("1_crpk1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = SubResource("Theme_3dl2c")
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="BoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.247059, 0.14902, 0.192157, 1)
+theme_override_constants/outline_size = 11
+text = "timer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="boss_info_ui" type="MarginContainer" parent="MarginContainer/BoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="bossName" type="Label" parent="MarginContainer/BoxContainer/boss_info_ui"]
+layout_mode = 2
+text = "bossname"
+
+[node name="BossHealthBar" type="ProgressBar" parent="MarginContainer/BoxContainer/boss_info_ui"]
+custom_minimum_size = Vector2(400, 16.92)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_k6ms0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qdomc")
+max_value = 500000.0
+step = 1.0
+value = 500000.0
+show_percentage = false
+
+[node name="bossHealth" type="Label" parent="MarginContainer/BoxContainer/boss_info_ui"]
+custom_minimum_size = Vector2(0, -8.68)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "5000"
+label_settings = SubResource("LabelSettings_hchnh")
+horizontal_alignment = 1
+vertical_alignment = 1

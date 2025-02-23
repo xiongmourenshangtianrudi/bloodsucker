@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=3 format=3 uid="uid://pso7w5iv8g14"]
+
+[ext_resource type="Script" path="res://assets/Resource/upgrades/ability_upgrade.gd" id="1_7r8iw"]
+[ext_resource type="Texture2D" uid="uid://bba53g41fylro" path="res://assets/icon/health_icon.png" id="1_coxbk"]
+
+[resource]
+script = ExtResource("1_7r8iw")
+id = "add_max_health"
+maxlevel = 10
+name = "心之刚"
+icon = ExtResource("1_coxbk")
+description = "增加0.5%点最大生命值，并且恢复所有已经损失的生命值。（我将继续战斗！level_max :10） "

@@ -1,0 +1,340 @@
+[gd_scene load_steps=34 format=3 uid="uid://cruetopoj0ds0"]
+
+[ext_resource type="Theme" uid="uid://dmt71bn71dtrt" path="res://assets/Resource/theme/themes.tres" id="1_oe6g0"]
+[ext_resource type="Script" path="res://script/Ui/ability_upgrade_card.gd" id="1_v1dq0"]
+[ext_resource type="PackedScene" uid="uid://dkbi5h853f8re" path="res://scene/RandomStreamPlayer2d/random_stream_player.tscn" id="3_yjf38"]
+[ext_resource type="AudioStream" uid="uid://dclc3tdld7xmf" path="res://assets/Resource/audio/cardSelected/switch29.ogg" id="4_0nqq8"]
+[ext_resource type="AudioStream" uid="uid://cfrr82e2fgc08" path="res://assets/Resource/audio/cardSelected/switch30.ogg" id="5_tg5c2"]
+[ext_resource type="AudioStream" uid="uid://fj8xp1g8mair" path="res://assets/Resource/audio/cardSelected/switch31.ogg" id="6_fj8lv"]
+[ext_resource type="AudioStream" uid="uid://us2pcqnuyq6k" path="res://assets/Resource/audio/cardSelected/switch32.ogg" id="7_thlyq"]
+[ext_resource type="AudioStream" uid="uid://h70v5vaxv2sc" path="res://assets/Resource/audio/cardSelected/switch33.ogg" id="8_xkwlr"]
+[ext_resource type="AudioStream" uid="uid://j3qxin6354gm" path="res://assets/Resource/audio/cardSelected/switch34.ogg" id="9_stp41"]
+[ext_resource type="AudioStream" uid="uid://cjx57r6ponwtk" path="res://assets/Resource/audio/cardSelected/switch35.ogg" id="10_7qjna"]
+[ext_resource type="AudioStream" uid="uid://bjsjbayd61fee" path="res://assets/Resource/audio/cardSelected/switch36.ogg" id="11_8gxrp"]
+[ext_resource type="AudioStream" uid="uid://8ospy2ncq8nk" path="res://assets/Resource/audio/cardSelected/switch37.ogg" id="12_e4egd"]
+[ext_resource type="AudioStream" uid="uid://bewf6m7cpffii" path="res://assets/Resource/audio/cardSelected/flibok.MP3" id="13_56co8"]
+[ext_resource type="AudioStream" uid="uid://clgop2mvwtl2b" path="res://assets/Resource/audio/cardSelected/switch1.ogg" id="13_puv28"]
+[ext_resource type="AudioStream" uid="uid://c0pl46x4qym" path="res://assets/Resource/audio/cardSelected/switch2.ogg" id="14_053vf"]
+[ext_resource type="AudioStream" uid="uid://hbomirh6vl6r" path="res://assets/Resource/audio/cardSelected/switch3.ogg" id="15_m7trj"]
+[ext_resource type="AudioStream" uid="uid://d3o86jiror4ce" path="res://assets/Resource/audio/cardSelected/switch4.ogg" id="16_uyhld"]
+[ext_resource type="AudioStream" uid="uid://cp1nwet3o0orp" path="res://assets/Resource/audio/cardSelected/switch5.ogg" id="17_8hmht"]
+[ext_resource type="AudioStream" uid="uid://dlxmk38k3oyky" path="res://assets/Resource/audio/cardSelected/switch6.ogg" id="18_t5e1h"]
+[ext_resource type="AudioStream" uid="uid://cjskbrdyhtrtx" path="res://assets/Resource/audio/cardSelected/switch7.ogg" id="19_bqeof"]
+[ext_resource type="AudioStream" uid="uid://d1byek8lhjamt" path="res://assets/Resource/audio/cardSelected/switch8.ogg" id="20_kr8k3"]
+[ext_resource type="AudioStream" uid="uid://csvftcjeosl2h" path="res://assets/Resource/audio/cardSelected/switch9.ogg" id="21_7ugtw"]
+[ext_resource type="AudioStream" uid="uid://urryxsj0wxy4" path="res://assets/Resource/audio/cardSelected/switch10.ogg" id="22_hvh42"]
+
+[sub_resource type="Animation" id="Animation_n7lky"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_c4rqm"]
+resource_name = "disCard"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sxr77"]
+resource_name = "selected"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(2.21914, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cardSelectedSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_f1g82"]
+resource_name = "showUpgradesCard"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.366667, 0.5),
+"transitions": PackedFloat32Array(2.29739, 0.392292, 1.27456, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("showCardSound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hgw6h"]
+_data = {
+"RESET": SubResource("Animation_n7lky"),
+"disCard": SubResource("Animation_c4rqm"),
+"selected": SubResource("Animation_sxr77"),
+"showUpgradesCard": SubResource("Animation_f1g82")
+}
+
+[sub_resource type="Animation" id="Animation_pln7k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hoverSound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_bjsws"]
+resource_name = "mouseHover"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.187, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.174533, 0.174533, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 2.14355),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hoverSound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_8myfb"]
+resource_name = "mouseLeave"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.187, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.174533, 0.174533, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ryccq"]
+_data = {
+"RESET": SubResource("Animation_pln7k"),
+"mouseHover": SubResource("Animation_bjsws"),
+"mouseLeave": SubResource("Animation_8myfb")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_qt8jt"]
+font_color = Color(0.133196, 0.133196, 0.133196, 1)
+
+[node name="abilityUpgradeCard" type="PanelContainer" groups=["upgrade_card"]]
+custom_minimum_size = Vector2(120, 150)
+offset_right = 136.0
+offset_bottom = 249.0
+pivot_offset = Vector2(68, 124)
+mouse_filter = 1
+theme = ExtResource("1_oe6g0")
+script = ExtResource("1_v1dq0")
+
+[node name="cardAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hgw6h")
+}
+
+[node name="mouseHoverAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ryccq")
+}
+
+[node name="cardSelectedSound" parent="." instance=ExtResource("3_yjf38")]
+streams = Array[AudioStream]([ExtResource("4_0nqq8"), ExtResource("5_tg5c2"), ExtResource("6_fj8lv"), ExtResource("7_thlyq"), ExtResource("8_xkwlr"), ExtResource("9_stp41"), ExtResource("10_7qjna"), ExtResource("11_8gxrp"), ExtResource("12_e4egd")])
+
+[node name="showCardSound" parent="." instance=ExtResource("3_yjf38")]
+streams = Array[AudioStream]([ExtResource("13_56co8")])
+
+[node name="hoverSound" parent="." instance=ExtResource("3_yjf38")]
+streams = Array[AudioStream]([ExtResource("13_puv28"), ExtResource("14_053vf"), ExtResource("15_m7trj"), ExtResource("16_uyhld"), ExtResource("17_8hmht"), ExtResource("18_t5e1h"), ExtResource("19_bqeof"), ExtResource("20_kr8k3"), ExtResource("21_7ugtw"), ExtResource("22_hvh42")])
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_oe6g0")
+theme_type_variation = &"AlternatePanalColor"
+
+[node name="nameLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(4.135, 8.46)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 16
+text = "testname"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="description" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "this Is description jlsjflk1l
+ lsjdl4j lsjjfkd jlsjekjsljf"
+label_settings = SubResource("LabelSettings_qt8jt")
+autowrap_mode = 1

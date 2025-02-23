@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq10rlarhuk6o"]
+
+[ext_resource type="Script" path="res://script/ability/axe_abiliity_controler.gd" id="1_hwg4l"]
+[ext_resource type="PackedScene" uid="uid://v0xfjqj6yyuc" path="res://scene/ability/axe_ability/aex_ability.tscn" id="2_fenl5"]
+
+[node name="axe_abiliityControler" type="Node"]
+script = ExtResource("1_hwg4l")
+aex_ability = ExtResource("2_fenl5")
+
+[node name="CoolTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true

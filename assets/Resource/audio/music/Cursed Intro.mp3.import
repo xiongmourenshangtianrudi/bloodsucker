@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ds1ws8txvmuet"
+path="res://.godot/imported/Cursed Intro.mp3-d00f27f89a2c5a550573f1a4bb55ef6b.mp3str"
+
+[deps]
+
+source_file="res://assets/Resource/audio/music/Cursed Intro.mp3"
+dest_files=["res://.godot/imported/Cursed Intro.mp3-d00f27f89a2c5a550573f1a4bb55ef6b.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

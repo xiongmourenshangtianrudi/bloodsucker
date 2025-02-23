@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkrvdbvex7wq0"]
+
+[ext_resource type="AudioStream" uid="uid://ncot75kmhm8j" path="res://assets/Resource/audio/music/772116__josefpres__piano-loops-167-efect-3-octave-long-loop-120-bpm.wav" id="1_1xk1y"]
+[ext_resource type="Script" path="res://scene/autoLoad/auto_load_music.gd" id="2_kula4"]
+
+[node name="autoLoadMusic" type="AudioStreamPlayer"]
+process_mode = 3
+stream = ExtResource("1_1xk1y")
+volume_db = -12.0
+bus = &"music"
+script = ExtResource("2_kula4")

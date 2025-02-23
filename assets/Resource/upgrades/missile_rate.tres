@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ability" load_steps=4 format=3 uid="uid://b7p71vhjwmxdi"]
+
+[ext_resource type="Script" path="res://assets/Resource/upgrades/ability.gd" id="1_0ej4c"]
+[ext_resource type="PackedScene" uid="uid://c6une6h78i01t" path="res://scene/ability/missile_ability/missile_ability_manager.tscn" id="1_ssdaf"]
+[ext_resource type="Texture2D" uid="uid://b44yk8gi6bt7t" path="res://assets/Resource/missile/missileicon.png" id="2_njt3q"]
+
+[resource]
+script = ExtResource("1_0ej4c")
+ability_controler_scene = ExtResource("1_ssdaf")
+id = "missile_rate"
+maxlevel = 10
+name = "火箭弹"
+icon = ExtResource("2_njt3q")
+description = "发射强力的火箭弹，升级增加火箭弹的数量和伤害"

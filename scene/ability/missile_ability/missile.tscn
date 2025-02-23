@@ -1,0 +1,74 @@
+[gd_scene load_steps=13 format=3 uid="uid://ccdvko1pgitfj"]
+
+[ext_resource type="Script" path="res://script/ability/missile.gd" id="1_1ocpf"]
+[ext_resource type="Texture2D" uid="uid://dor6tux30d2lr" path="res://assets/Resource/missile/missile.png" id="1_27nsr"]
+[ext_resource type="PackedScene" uid="uid://ciswm4yjduugo" path="res://assets/Resource/missile/explosion.tscn" id="2_pci5q"]
+[ext_resource type="Texture2D" uid="uid://bl0bx6y0qss1b" path="res://assets/Resource/missile/纯白背景.png" id="2_yu2kq"]
+[ext_resource type="Script" path="res://script/missile_ability/Tailing.gd" id="3_xvdcb"]
+[ext_resource type="Texture2D" uid="uid://ctbvxucwp4ewd" path="res://assets/Particl/红粒子.png" id="4_o3k3q"]
+[ext_resource type="PackedScene" uid="uid://b1s22iovhdq2u" path="res://scene/ability/hitBoxComponent/hit_box_component.tscn" id="5_bvrla"]
+[ext_resource type="PackedScene" uid="uid://dpixlnslxxg8v" path="res://scene/RandomStreamPlayer2d/random_stream_player_2d.tscn" id="8_i6xjb"]
+
+[sub_resource type="Curve" id="Curve_ycmp8"]
+_data = [Vector2(0.0426667, 1), 0.0, 0.0, 0, 0, Vector2(0.994667, 0), -0.641872, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_7arrk"]
+colors = PackedColorArray(0.980392, 0.113725, 0, 1, 0.988235, 0.862745, 0.0470588, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2gxpv"]
+particle_flag_disable_z = true
+angle_min = -617.1
+angle_max = -354.7
+direction = Vector3(0, 1, 0)
+spread = 19.915
+initial_velocity_min = 120.99
+initial_velocity_max = 199.43
+angular_velocity_min = -209.85
+angular_velocity_max = 253.72
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bcg6"]
+size = Vector2(6, 19.5)
+
+[node name="missile" type="Node2D"]
+script = ExtResource("1_1ocpf")
+boom_particles = ExtResource("2_pci5q")
+speed = 200.0
+rotate_speed = 150.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -10)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_27nsr")
+
+[node name="weiba" type="Node2D" parent="."]
+
+[node name="Line2D" type="Line2D" parent="."]
+top_level = true
+width = 5.0
+width_curve = SubResource("Curve_ycmp8")
+gradient = SubResource("Gradient_7arrk")
+texture = ExtResource("2_yu2kq")
+script = ExtResource("3_xvdcb")
+max_dot_array = 20
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+rotation = -0.000696873
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_2gxpv")
+texture = ExtResource("4_o3k3q")
+lifetime = 0.1
+
+[node name="hitBoxComponent" parent="." instance=ExtResource("5_bvrla")]
+position = Vector2(0, 0)
+damage = 30
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitBoxComponent"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_1bcg6")
+
+[node name="RandomStreamPlayer2d" parent="." instance=ExtResource("8_i6xjb")]
+streams = Array[AudioStream]([])

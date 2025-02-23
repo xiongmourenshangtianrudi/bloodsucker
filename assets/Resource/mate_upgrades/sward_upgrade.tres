@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="meta_upgrade" load_steps=2 format=3 uid="uid://dd2c3xvddtgq2"]
+
+[ext_resource type="Script" path="res://assets/Resource/mate_upgrades/mate_upgrades.gd" id="1_vr2c6"]
+
+[resource]
+script = ExtResource("1_vr2c6")
+id = "sward_upgrade"
+experence_coast = 1000
+max_quantity = 10
+title = "长剑强化"
+description = "增加长剑的攻击力，每升一级增加10点长剑能力的攻击力，最大等级为10"

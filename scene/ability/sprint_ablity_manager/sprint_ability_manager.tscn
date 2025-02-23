@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3ktag34joaj7"]
+
+[ext_resource type="Script" path="res://script/ability/sprint_ability_manager.gd" id="1_oooow"]
+[ext_resource type="PackedScene" uid="uid://duc2g818qnxkn" path="res://scene/ability/sprint_ablity_manager/range.tscn" id="2_euv4p"]
+
+[node name="sprint_ability_manger" type="Node"]
+script = ExtResource("1_oooow")
+range = ExtResource("2_euv4p")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true

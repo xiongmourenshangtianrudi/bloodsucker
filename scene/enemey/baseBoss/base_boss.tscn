@@ -1,0 +1,206 @@
+[gd_scene load_steps=34 format=3 uid="uid://dkjmk55xqw6td"]
+
+[ext_resource type="Script" path="res://script/enemy/BaseBoss/base_boss.gd" id="1_whoy8"]
+[ext_resource type="Script" path="res://script/HealthComponment/health_component.gd" id="2_l5x32"]
+[ext_resource type="PackedScene" uid="uid://22luwaoj0bqh" path="res://scene/enemey/hurtbox/hurtbox.tscn" id="2_s45tk"]
+[ext_resource type="Texture2D" uid="uid://d2cgy1a14qxlb" path="res://assets/enemy/Boss/zombie/character_zombie_idle.png" id="3_l840m"]
+[ext_resource type="Texture2D" uid="uid://dt67ryv6wifcb" path="res://assets/enemy/Boss/zombie/character_zombie_run0.png" id="4_4bw5k"]
+[ext_resource type="PackedScene" uid="uid://cwa0gjbr5im1s" path="res://scene/ability/axe_ability/enemySkill/enemty_axe_abiliity_controler.tscn" id="4_cfu5h"]
+[ext_resource type="Texture2D" uid="uid://cymuymbx731v" path="res://assets/enemy/Boss/zombie/character_zombie_run1.png" id="5_iojlh"]
+[ext_resource type="PackedScene" uid="uid://b3ktag34joaj7" path="res://scene/ability/sprint_ablity_manager/sprint_ability_manager.tscn" id="5_p8gc1"]
+[ext_resource type="Texture2D" uid="uid://ct05mrsmvc67a" path="res://assets/enemy/Boss/zombie/character_zombie_run2.png" id="6_ke466"]
+[ext_resource type="Texture2D" uid="uid://f63ujwqhd451" path="res://assets/enemy/Boss/zombie/character_zombie_attack0.png" id="7_02mq2"]
+[ext_resource type="Texture2D" uid="uid://d37cugv6jmrf4" path="res://assets/enemy/Boss/zombie/character_zombie_attack1.png" id="8_wi5df"]
+[ext_resource type="Texture2D" uid="uid://cc4iafsbv2eeu" path="res://assets/enemy/Boss/zombie/character_zombie_attack2.png" id="9_jm8j0"]
+[ext_resource type="Texture2D" uid="uid://b2o2h21s3w8kd" path="res://assets/enemy/Boss/zombie/character_zombie_attackKick.png" id="10_qxgjk"]
+[ext_resource type="PackedScene" uid="uid://dpixlnslxxg8v" path="res://scene/RandomStreamPlayer2d/random_stream_player_2d.tscn" id="14_ppnh2"]
+[ext_resource type="Texture2D" uid="uid://ctbvxucwp4ewd" path="res://assets/Particl/红粒子.png" id="15_5qn65"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ga1t8"]
+radius = 25.0
+
+[sub_resource type="Animation" id="Animation_2b8lo"]
+resource_name = "attack"
+loop_mode = 1
+step = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.000999987, 0.216, 0.595, 1.001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("7_02mq2"), ExtResource("8_wi5df"), ExtResource("9_jm8j0"), ExtResource("10_qxgjk")]
+}
+
+[sub_resource type="Animation" id="Animation_wbt85"]
+resource_name = "idel"
+length = 0.1
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_l840m")]
+}
+
+[sub_resource type="Animation" id="Animation_rlfuo"]
+resource_name = "run"
+length = 0.3
+loop_mode = 1
+step = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.001, 0.143, 0.296),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_4bw5k"), ExtResource("5_iojlh"), ExtResource("6_ke466")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pfrns"]
+_data = {
+"attack": SubResource("Animation_2b8lo"),
+"idel": SubResource("Animation_wbt85"),
+"run": SubResource("Animation_rlfuo")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tw34e"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f7632"]
+animation = &"idel"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lxcx6"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_txqau"]
+advance_mode = 2
+advance_condition = &"attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hgch5"]
+advance_mode = 2
+advance_condition = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ml40t"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8b6i3"]
+advance_mode = 2
+advance_condition = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2cw46"]
+advance_mode = 2
+advance_condition = &"idel"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qs8cc"]
+advance_mode = 2
+advance_condition = &"attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_28pjl"]
+advance_mode = 2
+advance_condition = &"idel"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_rqxuk"]
+states/attack/node = SubResource("AnimationNodeAnimation_tw34e")
+states/attack/position = Vector2(516, 239)
+states/idel/node = SubResource("AnimationNodeAnimation_f7632")
+states/idel/position = Vector2(411, 116)
+states/run/node = SubResource("AnimationNodeAnimation_lxcx6")
+states/run/position = Vector2(606, 111)
+transitions = ["run", "attack", SubResource("AnimationNodeStateMachineTransition_txqau"), "attack", "run", SubResource("AnimationNodeStateMachineTransition_hgch5"), "Start", "idel", SubResource("AnimationNodeStateMachineTransition_ml40t"), "idel", "run", SubResource("AnimationNodeStateMachineTransition_8b6i3"), "run", "idel", SubResource("AnimationNodeStateMachineTransition_2cw46"), "idel", "attack", SubResource("AnimationNodeStateMachineTransition_qs8cc"), "attack", "idel", SubResource("AnimationNodeStateMachineTransition_28pjl")]
+graph_offset = Vector2(-243.316, 58.5242)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_swaq1"]
+radius = 20.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_eh880"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(0.1, 0.1, 0.1)
+angle_min = -360.0
+angle_max = 360.0
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 12.29
+linear_accel_max = 40.22
+scale_min = 0.03
+scale_max = 0.1
+
+[node name="BaseBoss" type="CharacterBody2D" groups=["Boss", "enemy"]]
+position = Vector2(0, -1)
+collision_layer = 6
+collision_mask = 6
+motion_mode = 1
+platform_wall_layers = 255
+script = ExtResource("1_whoy8")
+current_move_speed = 70
+
+[node name="health_component" type="Node" parent="."]
+script = ExtResource("2_l5x32")
+max_health = 1e+06
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.04, -37.715)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_l840m")
+
+[node name="abilitys" type="Node" parent="."]
+
+[node name="sprint_ability" parent="abilitys" instance=ExtResource("5_p8gc1")]
+attack_range = 350.0
+
+[node name="enemy_axe_abiliityControler" parent="abilitys" instance=ExtResource("4_cfu5h")]
+damage = 50
+
+[node name="hurtbox" parent="." node_paths=PackedStringArray("helathbox") instance=ExtResource("2_s45tk")]
+helathbox = NodePath("../health_component")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2(-1, -28)
+shape = SubResource("CircleShape2D_ga1t8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pfrns")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_rqxuk")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/attack = false
+parameters/conditions/idel = false
+parameters/conditions/run = false
+
+[node name="NavigationAgent" type="NavigationAgent2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -25)
+shape = SubResource("CircleShape2D_swaq1")
+
+[node name="RandomStreamPlayer2d" parent="." instance=ExtResource("14_ppnh2")]
+
+[node name="blood" type="GPUParticles2D" parent="."]
+position = Vector2(0, -27)
+emitting = false
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_eh880")
+texture = ExtResource("15_5qn65")
+lifetime = 0.3
+one_shot = true
